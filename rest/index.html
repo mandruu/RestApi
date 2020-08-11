@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Llamar restApi</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div>
+    <form id ="formulario" >
+      <label for="fname">Titulo</label>
+      <input type="text" id="titulo" name="titulo" placeholder="Titulo">
+
+      <label for="lname">Descripcion</label>
+      <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion">
+
+      <label for="country">Nombre sala</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre Sala">
+      <label for="img">Seleccione imagen:</label>
+      <input type="file" id="imagen" name="imagen" accept="image/*">
+      <input type="submit" value="Enviar">
+    </form>
+  </div>
+  <script type="text/javascript">
+    var formulario = document.getElementById('formulario');
+    formulario.addEventListener('submit', function(e){
+      e.preventDefault();
+      var datos = new  FormData(formulario);
+      console.log('imagen')
+      fetch('crud.php', {
+        method : 'POST',
+        body : datos
+      })
+    })
+  </script>
+</body>
+</html>
